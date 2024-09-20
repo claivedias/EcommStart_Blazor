@@ -1,0 +1,74 @@
+﻿@page "/ProdutosListar"
+@using EcommStart.Shared.Models;
+@inject HttpClient httpClient
+
+<h3 class="text-center">Lista de produtos</h3>
+
+<div class="p-3 shadow d-flex justify-content-center">
+    <label class="p-2">
+        Procure pelo nome do produto o parte dele
+        <input class="form-control" @bind-value="palavra" />
+    </label>
+    <button class="btn btn-primary" @onclick="Carregar">Procurar</button>
+</div>
+
+<div class="text-center p-3">
+    <table class="table">
+        <tr>
+            <td class="border p-1">#</td>
+            <td class="border p-1">Nome</td>
+            <td class="border p-1">Preço</td>
+            <td class="border p-1">Quantidade</td>
+            <td class="border p-1">Imagem</td>
+        </tr>
+        @foreach (Produto p in produtos)
+        {
+            <tr>
+                <td class="border p-1">@p.Id</td>
+                <td class="border p-1">@p.Nome</td>
+                <td class="border p-1">@p.Preco.ToString("c")</td>
+                <td class="border p-1">@p.Quantidade</td>
+                <td class="border p-1">
+                    <img src="@p.Imagem" class="w-25" alt="Imagem do produto">
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="text-center p-3 text-danger">
+    @msg
+</div>
+
+@code {
+
+    private List<Produto>? produtos = new();
+    private string msg = "";
+    private string palavra = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Carregar();
+    }
+
+    protected async Task Carregar()
+    {
+        produtos = new();
+        string api = "api/produtos/listar";
+        if (!string.IsNullOrEmpty(palavra))
+        {
+            api = $"api/produtos/listar?nome={palavra}";
+        }
+        var response = await httpClient.GetAsync(api);
+
+        if (response.IsSuccessStatusCode)
+        {
+            produtos = await response.Content.ReadFromJsonAsync<List<Produto>>();
+        }
+        else
+        {
+            msg = await response.Content.ReadAsStringAsync();
+        }
+    }
+
+}

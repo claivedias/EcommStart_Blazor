@@ -1,0 +1,79 @@
+﻿@*@page "/listarprodutos"
+@using EcommStart.Shared;
+@inject HttpClient httpClient
+
+<h1>Consulta produto por ID</h1>
+
+<div class="p-3">
+
+    <label>
+        Informe um ID:
+        <input type="number" class="form-control" @bind-value=produtoId />
+    </label>
+
+    <label>
+        Informe um nome de produto:
+        <input type="text" class="form-control" @bind-value=produtoNome />
+    </label>
+
+</div>
+
+<button @onclick="ConsumirAPI" class="btn btn-primary">
+    Consumir API
+</button>
+
+<div class="p-3">
+    <table class="table table-bordered">
+        @foreach (Produto prd in produtos)
+        {
+            <tr>
+                <td>@prd.Id</td>
+                <td>@prd.Title</td>
+                <td>@prd.Description</td>
+            </tr>
+        }
+    </table>
+</div>
+
+@code {
+
+    // https://dummyjson.com/products/id
+
+    int produtoId;
+    string produtoNome = "";
+    List<Produto> produtos = new();
+
+    private async Task ConsumirAPI()
+    {
+        produtos.Clear();
+
+        if (produtoId != 0)
+        {
+            // Só um produto
+            var r = await httpClient.GetAsync($"https://dummyjson.com/products/{produtoId}");
+
+            if (r.IsSuccessStatusCode)
+            {
+                Produto? p = new();
+                p = await r.Content.ReadFromJsonAsync<Produto>();
+                produtos.Add(p);
+            }
+        }
+        else
+        {
+            // Lista de produtos
+            string api = $"https://dummyjson.com/products/search?q={produtoNome}";
+            var r = await httpClient.GetAsync(api);
+
+            if (r.IsSuccessStatusCode)
+            {
+                produtos = await r.Content.ReadFromJsonAsync<List<Produto>>();
+            }
+
+        }
+
+
+    }
+
+}
+*@

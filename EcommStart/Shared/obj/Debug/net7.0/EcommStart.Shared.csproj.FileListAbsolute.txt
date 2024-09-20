@@ -1,0 +1,11 @@
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\bin\Debug\net7.0\EcommStart.Shared.deps.json
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\bin\Debug\net7.0\EcommStart.Shared.dll
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\bin\Debug\net7.0\EcommStart.Shared.pdb
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.AssemblyInfoInputs.cache
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.AssemblyInfo.cs
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.csproj.CoreCompileInputs.cache
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.dll
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\refint\EcommStart.Shared.dll
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\EcommStart.Shared.pdb
+C:\Users\claiv\OneDrive\Área de Trabalho\cursoblazor-main\EcommStart\EcommStart\Shared\obj\Debug\net7.0\ref\EcommStart.Shared.dll

@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+
+<div class="px-5 d-flex flex-column">
+
+    <div class="bg-dark text-white text-center p-3">
+
+        <NavLink 
+            class="text-decoration-none" 
+            href="ProdutosIncluir">Incluir produtos
+        </NavLink> |
+        
+        <NavLink 
+            class="text-decoration-none" 
+            href="ProdutosListar">Listar produtos
+        </NavLink> |
+
+        <NavLink class="text-decoration-none"
+                 href="ProdutosAlterar">
+            Alterar produtos
+        </NavLink>
+
+    </div>
+
+    <div class="py-3 min-vh-100">
+        @Body
+    </div>
+
+    <div class="bg-dark text-white text-center p-3">
+        Aqui ficará seu rodapé
+    </div>
+
+</div>
+
+@code {
+
+
+}
+

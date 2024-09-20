@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EcommStart.Client.props" />
+</Project>

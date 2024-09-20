@@ -1,0 +1,111 @@
+﻿@page "/ProdutosExcluir"
+
+@using EcommStart.Shared.Models
+@inject HttpClient httpClient
+
+<h3>Excluir produtos</h3>
+
+<div class="shadow p-3">
+
+    <label>
+        Id do produto:
+        <InputNumber class="form-control"
+        @bind-Value="produtoId">
+        </InputNumber>
+    </label>
+
+    <div class="mt-2">
+        <button class="btn btn-primary"
+        @onclick="Consultar">
+            Consultar
+        </button>
+    </div>
+
+    <hr />
+
+    <EditForm Model="produto" OnSubmit="Excluir" class="d-flex flex-column">
+
+        <lable class="mt-2">
+            Nome
+            <InputText class="form-control"
+                @bind-Value="produto.Nome" disabled="true">
+            </InputText>
+        </lable>
+
+        <label class="mt-2">
+            Preço:
+            <InputNumber class="form-control"
+                @bind-Value="produto.Preco" disabled="true">
+            </InputNumber>
+        </label>
+
+        <label class="mt-2">
+            Quantidade:
+            <InputNumber class="form-control"
+                @bind-Value="produto.Quantidade" disabled="true">
+            </InputNumber>
+        </label>
+
+        <div class="mt-2">
+            <button class="btn btn-primary" type="submit">
+                Excluir
+            </button>
+        </div>
+
+    </EditForm>
+
+    <div class="mt-2 text-center p-3 text-danger">
+        @msg
+    </div>
+
+</div>
+
+@code
+{
+    int produtoId;
+    string msg = "";
+    Produto produto = new();
+
+    protected async Task Consultar()
+    {
+        msg = "";
+        string api = $"api/produtos/consultar/{produtoId}";
+
+        HttpResponseMessage response = await httpClient.GetAsync(api);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            msg = await response.Content.ReadAsStringAsync();
+            produto = new();
+        }
+        else
+        {
+            produto = await response.Content.ReadFromJsonAsync<Produto>();
+        }
+    }
+
+    protected async Task Excluir()
+    {
+        if(produto is null)
+        {
+            msg = "Produto está nulo";
+        }
+
+        string api = $"api/produtos/excluir/{produtoId}";
+        HttpResponseMessage response = await httpClient.DeleteAsync(api);
+
+        if(!response.IsSuccessStatusCode)
+        {
+            msg = await response.Content.ReadAsStringAsync();
+            if (string.IsNullOrEmpty(msg))
+            {
+                msg = $"Não foí possível acessar a API {api}";
+            }
+        }
+        else
+        {
+            msg = "Produto excluído com sucesso";
+            produto = new();
+        }
+    }
+}

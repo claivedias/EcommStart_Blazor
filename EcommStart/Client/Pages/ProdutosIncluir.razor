@@ -1,0 +1,66 @@
+﻿@page "/ProdutosIncluir"
+@using EcommStart.Shared.Models
+@inject HttpClient httpClient
+
+
+<h3>Inclusao de produtos</h3>
+
+<div class="shadow p-3">
+
+    <EditForm Model="produto" OnValidSubmit="Incluir" class="d-flex flex-column">
+
+        <label>
+            Nome:
+            <InputText class="form-control" @bind-Value="produto.Nome"></InputText>
+        </label>
+
+        <label class="mt-2">
+            Preço:
+            <InputNumber class="form-control" @bind-Value="produto.Preco"></InputNumber>
+        </label>
+
+        <label class="mt-2">
+            Quantidade:
+            <InputNumber class="form-control" @bind-Value="produto.Quantidade"></InputNumber>
+        </label>
+
+        <label class="mt-2">
+            Imagem:
+            <InputText class="form-control" @bind-Value="produto.Imagem"></InputText>
+        </label>
+
+        <div class="mt-2">
+            <button class="btn btn-primary" type="submit">Incluir</button>
+        </div>
+
+    </EditForm>
+
+    <div class="text-center p-3 text-danger">
+        @msg
+    </div>
+
+</div>
+
+
+@code {
+
+    Produto produto = new();
+    string msg = "";
+
+    private async Task Incluir()
+    {
+        string api = "api/produtos/incluir";
+        HttpResponseMessage response = await httpClient.PostAsJsonAsync<Produto>(api, produto);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            msg = await response.Content.ReadAsStringAsync();
+        }
+        else
+        {
+            msg = "Produto incluído com sucesso";
+            produto = new();
+        }
+    }
+
+}

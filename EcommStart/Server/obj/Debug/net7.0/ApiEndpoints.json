@@ -1,0 +1,82 @@
+[
+  {
+    "ContainingType": "EcommStart.Server.Controllers.ProdutosController",
+    "Method": "Alterar",
+    "RelativePath": "api/Produtos/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "EcommStart.Shared.Models.Produto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommStart.Server.Controllers.ProdutosController",
+    "Method": "Consultar",
+    "RelativePath": "api/Produtos/consultar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommStart.Server.Controllers.ProdutosController",
+    "Method": "Excluir",
+    "RelativePath": "api/Produtos/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommStart.Server.Controllers.ProdutosController",
+    "Method": "Adicionar",
+    "RelativePath": "api/Produtos/incluir",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "EcommStart.Shared.Models.Produto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EcommStart.Server.Controllers.ProdutosController",
+    "Method": "Listar",
+    "RelativePath": "api/Produtos/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
